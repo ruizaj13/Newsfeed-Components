@@ -106,8 +106,17 @@ const data = [
 // {title, date, firstParagraph, secondParagraph, thirdParagraph}
 
   const articlesContainer = document.querySelector('.articles');
+  const fifthArticle = {
+    title: 'HEY',
+    date: 'aug 6th, 1997',
+    firstParagraph: 'LETS',
+    secondParagraph: 'GO',
+    thirdParagraph: 'THE RAMONES',
+  }
+
+  data.push(fifthArticle);
   
-  function articleMaker(articleObj){
+  function articleMaker(artObj){
     const article = document.createElement('div');
     const artTitle = document.createElement('h2');
     const artDate = document.createElement('p');
@@ -126,23 +135,31 @@ const data = [
     article.classList.add('article');
     artDate.classList.add('date');
     button.classList.add('expandButton');
-
+    
+    artTitle.textContent = artObj.title;
+    artDate.textContent = artObj.date;
+    firstPara.textContent = artObj.firstParagraph
+    secondPara.textContent = artObj.secondParagraph;
+    thirdPara.textContent = artObj.thirdParagraph;
     button.textContent = ('+');
 
     button.addEventListener('click', event =>{
       article.classList.toggle('article-open');
-    })
+    });
 
-    return article
+    return article;
   }
   
   // console.log(articleMaker())
   
-  data.foreach
+  data.forEach((item) => {
+    const finalArticles = articleMaker(item);
+    articlesContainer.appendChild(finalArticles)
+  });
 
 
-  // articlesContainer.appendChild(articleMaker());
-
+  
+  
 
 
   
